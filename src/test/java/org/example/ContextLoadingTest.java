@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test;
 @DisplayName("Context loading.")
 class ContextLoadingTest {
 
-    @Test
-    @DisplayName("Load context.")
-    void shouldLoadContext() {
-    }
+  @Test
+  @DisplayName("Load context.")
+  void shouldLoadContext() {
+  }
 
 }

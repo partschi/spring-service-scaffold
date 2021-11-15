@@ -4,6 +4,7 @@ import org.owasp.dependencycheck.reporting.ReportGenerator.Format
 plugins {
     java
     jacoco
+    checkstyle
     id("org.springframework.boot") version "2.5.6"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     id("com.google.cloud.tools.jib") version "3.1.4"
