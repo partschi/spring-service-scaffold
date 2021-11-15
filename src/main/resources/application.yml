@@ -1,6 +1,6 @@
 spring:
   application:
-    name: spring-service-template
+    name: spring-service-scaffold
 
 
 sentry:

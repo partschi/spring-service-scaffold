@@ -1,2 +1,2 @@
-rootProject.name = "spring-service-template"
+rootProject.name = "spring-service-scaffold"
 

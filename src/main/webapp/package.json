@@ -1,5 +1,5 @@
 {
-  "name": "webapp",
+  "name": "spring-service-scaffold",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
