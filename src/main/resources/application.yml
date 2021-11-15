@@ -1,0 +1,6 @@
+sentry:
+  dsn:
+
+logging:
+  file:
+    path: config/log4j2/

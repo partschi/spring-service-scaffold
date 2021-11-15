@@ -25,6 +25,16 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-webflux")
+    implementation("io.sentry:sentry-spring-boot-starter:5.4.0")
+    implementation("org.springframework.boot:spring-boot-starter-log4j2")
+
+    modules {
+        module("org.springframework.boot:spring-boot-starter-logging") {
+            replacedBy("org.springframework.boot:spring-boot-starter-log4j2",
+                "Use Log4j2 instead of Logback")
+        }
+    }
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
