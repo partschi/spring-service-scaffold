@@ -1,0 +1,26 @@
+name: Deploy the service when pull requests are merged
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate-image:
+    name: build image and push it to GH container registry
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Java
+        uses: actions/setup-java@v2.3.1
+        with:
+          java-version: 17
+          distribution: 'zulu'
+      - name: Run JIB
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: jib
+        env:
+          GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
