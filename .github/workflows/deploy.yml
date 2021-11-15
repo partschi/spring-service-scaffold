@@ -22,5 +22,5 @@ jobs:
         with:
           arguments: jib
         env:
-          GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ACTOR: ${{ secrets.GH_ACTOR }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
