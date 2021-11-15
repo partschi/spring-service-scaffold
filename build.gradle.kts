@@ -1,3 +1,5 @@
+import com.moowork.gradle.node.npm.NpmTask
+import com.moowork.gradle.node.yarn.YarnTask
 import org.gradle.api.JavaVersion.VERSION_17
 import org.owasp.dependencycheck.reporting.ReportGenerator.Format
 
@@ -9,6 +11,7 @@ plugins {
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     id("com.google.cloud.tools.jib") version "3.1.4"
     id("org.owasp.dependencycheck") version "6.5.0.1"
+    id("com.github.node-gradle.node") version "2.2.1"
 }
 
 group = "org.example"
@@ -70,4 +73,43 @@ tasks.withType(Checkstyle::class) {
     reports {
         html.outputLocation.set(rootProject.file("build/reports/checkstyle.html"))
     }
+}
+
+// Read more about how to configure the plugin from
+// https://github.com/srs/gradle-node-plugin/blob/master/docs/node.md
+node {
+    version = "16.13.0"
+    download = true
+
+    // Set the work directory for unpacking node
+    workDir = file("${project.buildDir}/nodejs")
+
+    // Set the work directory for NPM
+    npmWorkDir = file("${project.buildDir}/npm")
+}
+
+tasks.create<NpmTask>("appNpmInstall") {
+    description = "Installs all dependencies from package.json"
+    setWorkingDir(file("${project.projectDir}/src/main/webapp"))
+    setArgs(listOf("install"))
+}
+
+tasks.create<YarnTask>("appNpmBuild") {
+    description = "Builds production version of the webapp"
+    setWorkingDir(file("${project.projectDir}/src/main/webapp"))
+    setEnvironment(mapOf("CI" to false))
+    args = listOf("build")
+
+    dependsOn(":appNpmInstall")
+}
+
+tasks.create("copyWebApp", Copy::class) {
+    from("src/main/webapp/build")
+    into("build/resources/main/static/.")
+
+    dependsOn(":appNpmBuild")
+}
+
+tasks.withType(JavaCompile::class.java) {
+    dependsOn(":copyWebApp")
 }
