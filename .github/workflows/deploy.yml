@@ -3,7 +3,7 @@ name: Deploy the service when pull requests are merged
 on:
   push:
     branches:
-      - main
+      - trunk
 
 jobs:
   generate-image:
