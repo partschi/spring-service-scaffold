@@ -10,7 +10,7 @@ plugins {
     id("org.springframework.boot") version "2.5.6"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     id("com.google.cloud.tools.jib") version "3.1.4"
-    id("org.owasp.dependencycheck") version "6.5.0.1"
+    id("org.owasp.dependencycheck") version "7.0.4.1"
     id("com.github.node-gradle.node") version "2.2.1"
 }
 
