@@ -30,7 +30,7 @@ dependencies {
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
     implementation("org.springframework.boot:spring-boot-starter-webflux")
-    implementation("io.sentry:sentry-spring-boot-starter:5.4.0")
+    implementation("io.sentry:sentry-spring-boot-starter:6.4.3")
     implementation("org.springframework.boot:spring-boot-starter-log4j2")
 
     modules {
