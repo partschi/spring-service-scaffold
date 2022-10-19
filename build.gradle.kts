@@ -11,7 +11,7 @@ plugins {
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     id("com.google.cloud.tools.jib") version "3.1.4"
     id("org.owasp.dependencycheck") version "6.5.0.1"
-    id("com.github.node-gradle.node") version "2.2.1"
+    id("com.github.node-gradle.node") version "3.5.0"
 }
 
 group = "org.example"
